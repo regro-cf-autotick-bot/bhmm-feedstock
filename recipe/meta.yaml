@@ -1,6 +1,6 @@
 {% set name = "bhmm" %}
-{% set version = "0.6.1" %}
-{% set sha256 = "eb5a1d93d7c46f6d2ffcb6901d2bdf3297dcbd4b8835a9da1cbd98c9567f265e" %}
+{% set version = "0.6.2" %}
+{% set sha256 = "c2709c101c0e3921aac992b7b24d279f24c1455313b4eae90da83b6332cfa464" %}
 
 package:
   name: {{ name|lower }}
