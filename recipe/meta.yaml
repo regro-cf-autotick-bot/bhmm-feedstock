@@ -12,22 +12,21 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 2
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
 requirements:
   build:
+    - {{ compiler('c') }}
+  host:
     - python
+    - pip
     - setuptools
     - cython
-    - numpy 1.8.*  # [not (win and (py35 or py36))]
-    - numpy 1.9.*  # [win and py35]
-    - numpy 1.11.*  # [win and py36]
+    - numpy
   run:
     - python
-    - numpy >=1.8  # [not (win and (py35 or py36))]
-    - numpy >=1.9  # [win and py35]
-    - numpy >=1.11  # [win and py36]
+    - {{ pin_compatible('numpy') }}
     - scipy
     - msmtools
     - six
@@ -38,7 +37,7 @@ test:
 
 about:
   home: http://github.com/bhmm/bhmm
-  license: LGPLv3+ 
+  license: LGPLv3+
   #license_file: LICENSE # TODO: add this to MANIFEST.in on next release.
   summary: 'Sampling from the Bayesian posterior of hidden Markov models.'
   description: |
@@ -48,6 +47,6 @@ about:
 
 extra:
   recipe-maintainers:
-    - jchodera 
+    - jchodera
     - franknoe
     - marscher
